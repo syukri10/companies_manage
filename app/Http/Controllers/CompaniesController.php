@@ -32,17 +32,16 @@ class CompaniesController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|string|unique:companies,name|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'nullable|email|unique:companies,email',
             'website' => 'nullable|url|unique:companies,website',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            'name.unique' => 'Name must be unique.',
             'name.required' => 'Company name is required.',
             'email.email' => 'Email must be a valid email address.',
-            'email.unique' => 'Email must be unique.',
+            'email.unique' => 'Email already register in the system.',
             'website.url' => 'Website must be a valid URL.',
-            'website.unique' => 'Website must be unique.',
+            'website.unique' => 'Website already register in the system.',
             'logo.image' => 'Logo must be an image file.',
             'logo.mimes' => 'Logo must be a jpeg, png, jpg, or gif file.',
             'logo.max' => 'Logo may not be greater than 2MB.',
@@ -93,17 +92,16 @@ class CompaniesController extends Controller
         $company = Companies::findOrFail($id);
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:companies,name,' . $company->id,
+            'name' => 'required|string|max:255',
             'email' => 'nullable|email|unique:companies,email,' . $company->id,
             'website' => 'nullable|url|unique:companies,website,' . $company->id,
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ], [
-            'name.unique' => 'Name must be unique.',
             'name.required' => 'Company name is required.',
             'email.email' => 'Email must be a valid email address.',
-            'email.unique' => 'Email must be unique.',
+            'email.unique' => 'Email already register in the system.',
             'website.url' => 'Website must be a valid URL.',
-            'website.unique' => 'Website must be unique.',
+            'website.unique' => 'Website already register in the system.',
             'logo.image' => 'Logo must be an image file.',
             'logo.mimes' => 'Logo must be a jpeg, png, jpg, or gif file.',
             'logo.max' => 'Logo may not be greater than 2MB.',
@@ -122,7 +120,7 @@ class CompaniesController extends Controller
             }
 
             $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs($filename);
+            $file->storeAs('logos', $filename, 'public');
 
             $validated['logo'] = $filename;
         }
@@ -140,7 +138,8 @@ class CompaniesController extends Controller
         $company = Companies::findOrFail($id);
         
         if ($company->logo) {
-            $logoPath = storage_path('app/public/' . $company->logo);
+            $logoPath = storage_path('app/public/logos/' . $company->logo);
+
             if (file_exists($logoPath)) {
                 unlink($logoPath);
             }

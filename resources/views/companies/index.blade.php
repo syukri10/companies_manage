@@ -69,6 +69,10 @@
                                                 <button class="px-3 py-1 rounded text-white"
                                                     style="background-color: #3b82f6;">Edit</button>
                                             </a>
+                                            <a href="{{ route('companies.show', $company->id) }}">
+                                                <button class="px-3 py-1 rounded text-white"
+                                                    style="background-color: #34eb9b;">Show</button>
+                                            </a>
                                             <form method="POST" action="{{ route('companies.destroy', $company->id) }}"
                                                 onsubmit="return confirm('Are you sure?');">
                                                 @csrf

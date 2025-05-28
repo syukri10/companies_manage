@@ -150,4 +150,11 @@ class CompaniesController extends Controller
 
         return redirect()->route('companies.index')->with('success', 'Company deleted successfully.');
     }
+
+    public function dashboard()
+    {
+        $count = Companies::all()->count();
+        return view('dashboard',compact('count'));
+        
+    }
 }

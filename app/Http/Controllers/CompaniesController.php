@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Companies;
 use Illuminate\Http\Request;
 
 class CompaniesController extends Controller
@@ -11,7 +12,8 @@ class CompaniesController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Companies::all();
+        return view('companies.index', compact( 'companies'));
     }
 
     /**

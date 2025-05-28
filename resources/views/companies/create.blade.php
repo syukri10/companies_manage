@@ -25,12 +25,14 @@
                             <x-input-label for="email" :value="__('Email')" />
                             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                                 :value="old('email')" />
+                                <p class="text-sm text-gray-500 mt-1">e.g. admin@gmail.com</p>
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="mb-4">
                             <x-input-label for="website" :value="__('Website')" />
-                            <x-text-input id="website" class="block mt-1 w-full" type="text" name="website"
+                            <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" 
                                 :value="old('website')" />
+                                <p class="text-sm text-gray-500 mt-1">e.g. https://example.com</p>
                             <x-input-error :messages="$errors->get('website')" class="mt-2" />
                         </div>
                         <div class="mb-4">

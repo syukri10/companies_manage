@@ -72,7 +72,8 @@ class CompaniesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $company = Companies::findOrFail($id);
+        return view('companies.show', compact('company'));
     }
 
     /**
@@ -115,8 +116,8 @@ class CompaniesController extends Controller
                 return back()->withErrors(['logo' => 'Logo must be at least 100x100 pixels.'])->withInput();
             }
 
-            if ($company->logo && Storage::exists($company->logo)) {
-                Storage::delete($company->logo);
+            if ($company->logo && Storage::disk('public')->exists('logos/' . $company->logo)) {
+                Storage::disk('public')->delete('logos/' . $company->logo);
             }
 
             $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();

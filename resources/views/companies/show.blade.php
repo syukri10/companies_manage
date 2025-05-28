@@ -11,7 +11,9 @@
                     <x-primary-button class="mb-4" onclick="window.location='{{ route('companies.index') }}'">
                         {{ __('Back to Companies') }}
                     </x-primary-button>
-                    {{-- <h3 class="mb-4"> Create New Company</h3> --}}
+                    <div class="flex justify-center gap-4">
+                    <h3 class="mb-4"> Company Details Information : <strong>{{$company->name}}</strong></h3>
+                    </div>
 
                     <div class="card">
                         <div class="card-body">
@@ -23,8 +25,10 @@
                                 <p><strong>Logo:</strong> N/A</p>
                                 @endif
                             </div>
-                            <h2>{{ $company->name }}</h2>
+                            <div class="flex justify-center gap-4">
                             <p><strong>Email:</strong> {{ $company->email ?? 'N/A' }}</p>
+                            </div>
+                            <div class="flex justify-center gap-4">
                             <p><strong>Website:</strong>
                                 @if($company->website)
                                     <a href="{{ $company->website }}" target="_blank">{{ $company->website }}</a>
@@ -32,6 +36,7 @@
                                     N/A
                                 @endif
                             </p>
+                            </div>
                         </div>
                     </div>
 

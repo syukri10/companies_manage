@@ -57,7 +57,7 @@ class CompaniesController extends Controller
             }
 
             $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs($filename);
+            $file->storeAs('logos', $filename, 'public');
 
             $validated['logo'] = $filename;
         }

@@ -80,6 +80,3 @@ Password:
 password
 ```
 
-## ✅ You're Ready!
-Open your browser and enjoy your personal TODO list manager!
-Tasks will be saved during your session and cleared when you close the browser tab or go inactive.

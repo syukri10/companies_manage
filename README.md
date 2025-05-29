@@ -60,7 +60,18 @@ php artisan storage:link
 php artisan key:generate
 ```
 
-### 7️⃣ Start the Development Server
+### 7️⃣ Vite Install
+
+```bash
+npm install
+```
+Then, build the frontend assets
+
+```bash
+npm run build
+```
+
+### 8️⃣ Start the Development Server
 
 ```bash
 php artisan serve
@@ -70,7 +81,7 @@ Then visit the app at:
 ```arduino
 http://localhost:8000
 ```
-### 8️⃣ Log in to The System!
+### 9️⃣ Log in to The System!
 Email:
 ```bash
 admin@gmail.com

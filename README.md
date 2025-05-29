@@ -81,13 +81,21 @@ Then visit the app at:
 ```arduino
 http://localhost:8000
 ```
+---
+
+## ✅ You're Ready!
+
 ### 9️⃣ Log in to The System!
 Email:
 ```bash
-admin@gmail.com
+admin@admin.com
 ```
 Password:
 ```bash
 password
 ```
 
+---
+
+## 🙋‍♂️ Author
+- Built with ❤️ by [@syukri10](https://github.com/syukri10).
